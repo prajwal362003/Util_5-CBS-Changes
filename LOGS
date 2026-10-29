@@ -1,0 +1,107 @@
+INFO  [2026-10-29T15:27:02,739] :T_NAME="main" t_id="3" t_prio="5" : DatabaseConfiguration.getDataSource 58: maxPool[2]
+INFO  [2026-10-29T15:27:02,740] :T_NAME="main" t_id="3" t_prio="5" : DatabaseConfiguration.getDataSource 59: DB_MIN_IDLE[2]
+INFO  [2026-10-29T15:27:02,740] :T_NAME="main" t_id="3" t_prio="5" : DatabaseConfiguration.getDataSource 60: DB_CON_TIMEOUT[30000]
+INFO  [2026-10-29T15:27:02,740] :T_NAME="main" t_id="3" t_prio="5" : DatabaseConfiguration.getDataSource 61: DB_IDLE_TIMEOUT[30000]
+INFO  [2026-10-29T15:27:02,740] :T_NAME="main" t_id="3" t_prio="5" : DatabaseConfiguration.getDataSource 62: pName[dev_conn]
+WARN  [2026-10-29T15:27:02,741] :T_NAME="main" t_id="3" t_prio="5" : HikariConfig.validateNumerics 1150: dev_conn - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+INFO  [2026-10-29T15:27:02,747] :T_NAME="main" t_id="3" t_prio="5" : HikariDataSource.<init> 79: dev_conn - Starting...
+INFO  [2026-10-29T15:27:03,078] :T_NAME="main" t_id="3" t_prio="5" : HikariPool.checkFailFast 580: dev_conn - Added connection oracle.jdbc.driver.T4CConnection@1601e47
+INFO  [2026-10-29T15:27:03,084] :T_NAME="main" t_id="3" t_prio="5" : HikariDataSource.<init> 81: dev_conn - Start completed.
+INFO  [2026-10-29T15:27:03,084] :T_NAME="main" t_id="3" t_prio="5" : DatabaseConfiguration.getDataSource 68: Database Connection Pool 'dev_conn' started successfully.
+INFO  [2026-10-29T15:27:03,126] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.processAvailableCustomer 120: Inside processAvailableCustomer
+INFO  [2026-10-29T15:27:03,127] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.fetchCustomerInBatch 267: fetchLotSql:  SELECT cif_number, branch_code, account_number
+FROM (
+    SELECT cif_number, branch_code, account_number, ROWNUM rn
+    FROM kycupdate.kyc_perfios_customer_details
+    WHERE cif_status = 'ZP' AND lcpc = ?
+)
+WHERE rn < 1000
+
+INFO  [2026-10-29T15:27:03,291] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.fetchCustomersOnLot 160: Number of zipCustomer fetched from database 1
+INFO  [2026-10-29T15:27:03,292] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.fetchCustomersOnLot 164: Size of the fetchLotCustomers: 1
+INFO  [2026-10-29T15:27:03,292] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.fetchCustomersOnLot 165: <<<< No of folders  >>> 1
+INFO  [2026-10-29T15:27:03,292] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 144: __________________________________________________MUM
+INFO  [2026-10-29T15:27:03,293] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 145: Inside MAIN of Utility....create doc file..............
+INFO  [2026-10-29T15:27:03,293] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 148: The input folder path is :/REKYC/UTIL_5_ZIP_CREATION/INPUT
+INFO  [2026-10-29T15:27:03,293] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 149: The Backup folder path is :/REKYC/UTIL_5_ZIP_CREATION/BACKUP
+INFO  [2026-10-29T15:27:03,293] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 150: The Exception folder path is :/REKYC/UTIL_5_ZIP_CREATION/EXCEPTION
+INFO  [2026-10-29T15:27:03,293] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.fetchNewLotToProcess 246: fetchLotSql: select max(To_number(trim(lot_count))) from kycupdate.Rekyc_perfios_lot_details where lcpc=?
+INFO  [2026-10-29T15:27:03,313] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.fetchNewLotNumber 142: newLotNumber  >>> 11
+INFO  [2026-10-29T15:27:03,313] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.fetchNewLotNumber 149: newLotNumber  >>> 12
+INFO  [2026-10-29T15:27:03,313] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 159: newLotNumber 12
+INFO  [2026-10-29T15:27:03,314] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 180: lot to process now LOT12
+INFO  [2026-10-29T15:27:03,314] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 183: tempZip/REKYC/UTIL_5_ZIP_CREATION/ZIP_OUTPUT/MUM_LOT12_29102026.zip
+INFO  [2026-10-29T15:27:03,314] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 185: lcpcMUM lotNoLOT12
+INFO  [2026-10-29T15:27:03,314] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 188: csv Cust TempFile/REKYC/UTIL_5_ZIP_CREATION/ZIP_OUTPUT/MUM_LOT12_29102026_CustomerList.csv
+INFO  [2026-10-29T15:27:03,314] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 191: csvTempZipFile/REKYC/UTIL_5_ZIP_CREATION/ZIP_OUTPUT/MUM_LOT12_29102026_Details.zip
+INFO  [2026-10-29T15:27:03,314] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 195: lotNameToSend MUM_LOT12_29102026
+INFO  [2026-10-29T15:27:03,322] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 223: CustomerId : 00000085001879123_00437_00000030008132287
+INFO  [2026-10-29T15:27:03,322] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.claimFolder 628: sourceFolder Path : /REKYC/UTIL_5_ZIP_CREATION/INPUT/MUM/00000085001879123_00437_00000030008132287
+INFO  [2026-10-29T15:27:03,322] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.claimFolder 631: Target Path : /REKYC/UTIL_5_ZIP_CREATION/PROCESSING/MUM/00000085001879123_00437_00000030008132287
+INFO  [2026-10-29T15:27:03,323] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.claimFolder 635: Path moved : /REKYC/UTIL_5_ZIP_CREATION/PROCESSING/MUM/00000085001879123_00437_00000030008132287
+INFO  [2026-10-29T15:27:03,324] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.writeClaimMarker 659: content to write host=ckycuatapp-3233276
+claimedAt=2026-10-29T09:57:03.323309075Z
+
+INFO  [2026-10-29T15:27:03,325] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 237: CleanFolder Path is /REKYC/UTIL_5_ZIP_CREATION/CLEAN/MUM/00000085001879123_00437_00000030008132287
+INFO  [2026-10-29T15:27:03,325] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 242: Exception Folder Path is /REKYC/UTIL_5_ZIP_CREATION/EXCEPTION/MUM/00000085001879123_00437_00000030008132287
+INFO  [2026-10-29T15:27:03,329] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.checkStatusInPerfiosTable 120: cif status in perfios table ZP
+INFO  [2026-10-29T15:27:03,330] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 259: cif status in perfios table true
+INFO  [2026-10-29T15:27:03,330] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.checkStatusInMAinTables 172: ckycCustomerQuery : select status from ckyc.ckyc_customer_details where cif_number ='00000085001879123'
+INFO  [2026-10-29T15:27:03,337] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.checkStatusInMAinTables 193: kycCustomerQuery : select status from kycupdate.kyc_customer_details where cif_number ='00000085001879123'
+INFO  [2026-10-29T15:27:03,403] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 267: cifNotUnderProcess true
+INFO  [2026-10-29T15:27:03,403] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 274: customerFolder : /REKYC/UTIL_5_ZIP_CREATION/PROCESSING/MUM
+INFO  [2026-10-29T15:27:03,403] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 278: Clean Folder Path : /REKYC/UTIL_5_ZIP_CREATION/CLEAN/MUM/00000085001879123_00437_00000030008132287
+INFO  [2026-10-29T15:27:03,404] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.moveValidatedFolderToClean 668: Inside move FolderToClean
+ERROR [2026-10-29T15:27:03,406] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.copyForNfs 695: NFS copy attempt 1 failed for /REKYC/UTIL_5_ZIP_CREATION/PROCESSING/MUM/00000085001879123_00437_00000030008132287/00000085001879123_KYC_1_04.pdf: /REKYC/UTIL_5_ZIP_CREATION/CLEAN/MUM/00000085001879123_00437_00000030008132287/00000085001879123_KYC_1_04.pdf.tmp
+ERROR [2026-10-29T15:27:03,607] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.copyForNfs 695: NFS copy attempt 2 failed for /REKYC/UTIL_5_ZIP_CREATION/PROCESSING/MUM/00000085001879123_00437_00000030008132287/00000085001879123_KYC_1_04.pdf: /REKYC/UTIL_5_ZIP_CREATION/CLEAN/MUM/00000085001879123_00437_00000030008132287/00000085001879123_KYC_1_04.pdf.tmp
+ERROR [2026-10-29T15:27:04,009] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.copyForNfs 695: NFS copy attempt 3 failed for /REKYC/UTIL_5_ZIP_CREATION/PROCESSING/MUM/00000085001879123_00437_00000030008132287/00000085001879123_KYC_1_04.pdf: /REKYC/UTIL_5_ZIP_CREATION/CLEAN/MUM/00000085001879123_00437_00000030008132287/00000085001879123_KYC_1_04.pdf.tmp
+INFO  [2026-10-29T15:27:04,611] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 367: Inside catch
+java.io.UncheckedIOException: Failed to push validated folder to clean: /REKYC/UTIL_5_ZIP_CREATION/PROCESSING/MUM/00000085001879123_00437_00000030008132287
+        at com.sbi.zip.controller.ZipCreationController.moveValidatedFolderToClean(ZipCreationController.java:681)
+        at com.sbi.zip.controller.ZipCreationController.zipCreate(ZipCreationController.java:279)
+        at com.sbi.zip.controller.ZipCreationController.processAvailableCustomer(ZipCreationController.java:132)
+        at com.sbi.zip.controller.ZipCreationController.processLcpc(ZipCreationController.java:114)
+        at main.PerfiosZipCreation.main(PerfiosZipCreation.java:16)
+Caused by: java.nio.file.AccessDeniedException: /REKYC/UTIL_5_ZIP_CREATION/CLEAN/MUM/00000085001879123_00437_00000030008132287/00000085001879123_KYC_1_04.pdf.tmp
+        at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:90)
+        at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+        at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+        at java.base/sun.nio.fs.UnixFileSystem.copyFile(UnixFileSystem.java:633)
+        at java.base/sun.nio.fs.UnixFileSystem.copy(UnixFileSystem.java:1022)
+        at java.base/sun.nio.fs.UnixFileSystemProvider.copy(UnixFileSystemProvider.java:280)
+        at java.base/java.nio.file.Files.copy(Files.java:1192)
+        at com.sbi.zip.controller.ZipCreationController.copyForNfs(ZipCreationController.java:690)
+        at com.sbi.zip.controller.ZipCreationController.moveValidatedFolderToClean(ZipCreationController.java:676)
+        ... 4 more
+java.io.UncheckedIOException: Failed to push validated folder to clean: /REKYC/UTIL_5_ZIP_CREATION/PROCESSING/MUM/00000085001879123_00437_00000030008132287
+        at com.sbi.zip.controller.ZipCreationController.moveValidatedFolderToClean(ZipCreationController.java:681)
+        at com.sbi.zip.controller.ZipCreationController.zipCreate(ZipCreationController.java:279)
+        at com.sbi.zip.controller.ZipCreationController.processAvailableCustomer(ZipCreationController.java:132)
+        at com.sbi.zip.controller.ZipCreationController.processLcpc(ZipCreationController.java:114)
+        at main.PerfiosZipCreation.main(PerfiosZipCreation.java:16)
+Caused by: java.nio.file.AccessDeniedException: /REKYC/UTIL_5_ZIP_CREATION/CLEAN/MUM/00000085001879123_00437_00000030008132287/00000085001879123_KYC_1_04.pdf.tmp
+        at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:90)
+        at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+        at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+        at java.base/sun.nio.fs.UnixFileSystem.copyFile(UnixFileSystem.java:633)
+        at java.base/sun.nio.fs.UnixFileSystem.copy(UnixFileSystem.java:1022)
+        at java.base/sun.nio.fs.UnixFileSystemProvider.copy(UnixFileSystemProvider.java:280)
+        at java.base/java.nio.file.Files.copy(Files.java:1192)
+        at com.sbi.zip.controller.ZipCreationController.copyForNfs(ZipCreationController.java:690)
+        at com.sbi.zip.controller.ZipCreationController.moveValidatedFolderToClean(ZipCreationController.java:676)
+        ... 4 more
+ERROR [2026-10-29T15:27:04,612] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.processAvailableCustomer 135:  Error from zipCreate    zipCreate failed for lcpc MUM
+INFO  [2026-10-29T15:27:04,613] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.processAvailableCustomer 120: Inside processAvailableCustomer
+INFO  [2026-10-29T15:27:04,613] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.fetchCustomerInBatch 267: fetchLotSql:  SELECT cif_number, branch_code, account_number
+FROM (
+    SELECT cif_number, branch_code, account_number, ROWNUM rn
+    FROM kycupdate.kyc_perfios_customer_details
+    WHERE cif_status = 'ZP' AND lcpc = ?
+)
+WHERE rn < 1000
+
+INFO  [2026-10-29T15:27:04,617] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.fetchCustomersOnLot 160: Number of zipCustomer fetched from database 0
+INFO  [2026-10-29T15:27:04,617] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.fetchCustomersOnLot 164: Size of the fetchLotCustomers: 0
+INFO  [2026-10-29T15:27:04,618] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.fetchCustomersOnLot 165: <<<< No of folders  >>> 0
+INFO  [2026-10-29T15:27:04,618] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.processAvailableCustomer 127: No records found for the LCPC  BAN
+Kyc update File seperation utility ends
