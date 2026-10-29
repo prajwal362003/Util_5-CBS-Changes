@@ -1,0 +1,18 @@
+FILES THAT I DO NOT HAVE (add these lines yourself)
+===================================================
+
+1) PerfiosService.java (interface)  -- add inside the interface
+    // ===== CHANGE (ZF) =====
+    void markZipFailed(String cifNumber, String accountNumber, String remark);
+    // ===== CHANGE (CBS) - CR 26100024 =====
+    void insertCbsRecord(java.sql.Date dumpDate, String lotNo, String fileName, String lcpc, int noOfRecords);
+
+2) PerfiosDetailsDAO.java (interface)  -- add inside the interface
+    // ===== CHANGE (ZF) =====
+    void updateZipFailed(String cifNumber, String accountNumber, String remark);
+    // ===== CHANGE (CBS) - CR 26100024 =====
+    void insertCbsRecord(java.sql.Date dumpDate, String lotNo, String fileName, String lcpc, int noOfRecords);
+
+3) Properties file (same file where Zip.Output is defined)
+    # CHANGE (CBS) - CR 26100024
+    Cbs.Data=<path to cbs_data folder>
