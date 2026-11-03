@@ -1,0 +1,244 @@
+INFO  [2026-11-03T12:49:34,825] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 336: finalZip /REKYC/UTIL_5_ZIP_CREATION/ZIP_OUTPUT/MUM_LOT15_03112026.zip
+INFO  [2026-11-03T12:49:34,825] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 337: tempzip /REKYC/UTIL_5_ZIP_CREATION/ZIP_OUTPUT/MUM_LOT15_03112026.zip
+INFO  [2026-11-03T12:49:34,825] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 339: tempZip exists true
+INFO  [2026-11-03T12:49:34,825] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 340: tempzip size :156332
+INFO  [2026-11-03T12:49:34,825] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 342: finalZip /REKYC/UTIL_5_ZIP_CREATION/ZIP_OUTPUT/MUM_LOT15_03112026.zip
+INFO  [2026-11-03T12:49:34,825] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 349: finalCsvZip /REKYC/UTIL_5_ZIP_CREATION/ZIP_OUTPUT/MUM_LOT15_03112026_Details.zip
+INFO  [2026-11-03T12:49:34,825] :T_NAME="main" t_id="3" t_prio="5" : PerfiosServiceImpl.updateStatusAndHistory 182: lotName MUM_LOT15_03112026.zip
+INFO  [2026-11-03T12:49:34,826] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.updateZipStatus 364: No of rows to be updated 1
+INFO  [2026-11-03T12:49:34,833] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.updateZipStatus 367: No of rows updated 1
+INFO  [2026-11-03T12:49:34,833] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.insertHistory 380: No of rows to be updated 1
+INFO  [2026-11-03T12:49:34,840] :T_NAME="main" t_id="3" t_prio="5" : PerfiosDetailsDAOImpl.insertHistory 383: No of rows updated 1
+ERROR [2026-11-03T12:49:34,865] :T_NAME="main" t_id="3" t_prio="5" : ZipCreationController.zipCreate 377: CBS dump/manifest/DB entry FAILED for lot zip MUM_LOT15_03112026.zip (lcpc=MUM, lotNo=LOT15, dumpZip=CBS_dump_1_03112026.zip). Lot zip and ZC status are already done - fix and regenerate this lot's CBS rows manually.
+org.springframework.jdbc.UncategorizedSQLException: PreparedStatementCallback; uncategorized SQLException; SQL state [99999]; error code [28094]; ORA-28094: SQL construct not supported by data redaction
+
+https://docs.oracle.com/error-help/db/ora-28094/
+        at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1550)
+        at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:689)
+        at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:732)
+        at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:752)
+        at com.sbi.zip.DAOImpl.PerfiosDetailsDAOImpl.streamCbsDump(PerfiosDetailsDAOImpl.java:539)
+        at com.sbi.zip.serviceImpl.PerfiosServiceImpl.streamCbsDump(PerfiosServiceImpl.java:211)
+        at com.sbi.zip.controller.ZipCreationController.appendLotToCbsDump(ZipCreationController.java:489)
+        at com.sbi.zip.controller.ZipCreationController.zipCreate(ZipCreationController.java:361)
+        at com.sbi.zip.controller.ZipCreationController.processAvailableCustomer(ZipCreationController.java:134)
+        at com.sbi.zip.controller.ZipCreationController.processLcpc(ZipCreationController.java:116)
+        at main.PerfiosZipCreation.main(PerfiosZipCreation.java:16)
+Caused by: java.sql.SQLException: ORA-28094: SQL construct not supported by data redaction
+
+https://docs.oracle.com/error-help/db/ora-28094/
+        at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:719)
+        at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:619)
+        at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1376)
+        at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:997)
+        at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:813)
+        at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:241)
+        at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:525)
+        at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:307)
+        at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:1268)
+        at oracle.jdbc.driver.OracleStatement.prepareDefineBufferAndExecute(OracleStatement.java:1426)
+        at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1300)
+        at oracle.jdbc.driver.OracleStatement.executeSQLSelect(OracleStatement.java:1857)
+        at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1633)
+        at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3974)
+        at oracle.jdbc.driver.OraclePreparedStatement.executeQuery(OraclePreparedStatement.java:4161)
+        at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeQuery(OraclePreparedStatementWrapper.java:1121)
+        at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+        at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+        at org.springframework.jdbc.core.JdbcTemplate.lambda$query$0(JdbcTemplate.java:738)
+        at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:670)
+        ... 9 more
+Caused by: Error : 28094, Position : 2481, SQL = SELECT *
+FROM (
+    SELECT
+        a.cif_number as cif_1,
+        a.account_number as acct_no_2,
+        ' ' as ACCT_TYPE_3,
+        ' ' as LOAN_ACCT_FLG_8,
+        ' ' as NO_ACCT_NO_RELTN_9,
+        ' ' as CLSD_ACCT_NO_RELTN_10,
+        ' ' as CUST_TIER_TYPE_CODE_11A,
+        ' ' as CUST_TIER_TYPE_DESC_11B,
+        ' ' as CIF_STATUS_12,
+        ' ' as CIF_DEDUPED_13,
+        ' ' as RISK_CATEGORY_14,
+        ' ' as KYC_SCORE_15,
+        ' ' as KYC_REVIEW_DATE_16,
+        ' ' as CIF_OPEN_DATE_17,
+        ' ' as CIF_CHANNEL_18,
+        ' ' as CIF_DEPOSIT_BAL_19,
+        ' ' as CIF_LOAN_BAL_20,
+        b.APPLICANT_NAME_PREFIX as NAME_PREFIX_CD_21,
+        b.applicant_first_name as FIRST_NAME_22A,
+        b.applicant_middle_name as MIDDLE_NAME_22B,
+        b.applicant_last_name as LAST_NAME_23,
+        ' ' as RELATIVE_CODE_24,
+       b.FATHER_NAME_PREFIX as FATHER_NAME_PREFIX_25A,
+        b.FATHER_FIRST_NAME as FATHER_FIRST_NAME_26A1,
+       b.FATHER_MIDDLE_NAME as FATHER_MID_NAME_26A2,
+     b.FATHER_LAST_NAME  as FATHER_LAST_NAME_27A,
+       b.SPOUSE_NAME_PREFIX as SPOUSE_NAME_PREFIX_25B,
+        b.SPOUSE_FIRST_NAME as SPOUSE_FIRST_NAME_26B1,
+        b.SPOUSE_MIDDLE_NAME as SPOUSE_MID_NAME_26B2,
+        b.SPOUSE_LAST_NAME as SPOUSE_LAST_NAME_27B,
+       b.MOTHER_NAME_PREFIX as MOTHER_NAME_PREFIX_28,
+       b.MOTHER_FIRST_NAME as MOTHER_FIRST_NAME_29A,
+        b.MOTHER_MIDDLE_NAME as MOTHER_MID_NAME_29B,
+        b.MOTHER_LAST_NAME as MOTHER_LAST_NAME_30,
+        b.GENDER as GENDER_31,
+        --b.dob as DATE_OF_BIRTH_32,
+        TO_CHAR(b.dob, 'YYYY-MM-DD') as DATE_OF_BIRTH_32,
+        ' ' as PAN_OR_FORM60_33,
+        (select c.ADDRESS_LINE_1 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_ADDR_LN_1_36,
+        (select c.ADDRESS_LINE_2 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_ADDR_LN_2_37,
+        (select c.ADDRESS_LINE_3 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_ADDR_LN_3_38,
+        (select c.ADDRESS_CITY_VILLAGE from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_CITY_NAME_39C,
+        (select c.district_code_fk from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_DIST_CODE_40A,
+        (select cersai_district from ckyc.pincode_master m where m.cbs_district_id=c.district_code_fk and c.flag_regular_address='R' fetch first row only) as PERM_DESCRIPTION_40B,
+        (select c.state_code_fk from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_STATE_CODE_41A,
+        (select state_name from ckyc.pincode_master m where m.state_code=c.STATE_CODE_FK and c.flag_regular_address='R' fetch first row only) as PERM_STATE_NAME_41B,
+        ' ' as PERM_COUNTRY_CODE_42A,
+        ' ' as PERM_COUNTRY_NAME_42B,
+         case when c.address_pin_code = 'Other' and c.flag_regular_address='R' then c.other_pincode when c.address_pin_code <> 'Other' and c.flag_regular_address='R' then c.address_pin_code end as PERM_ADDR_PINCODE_43,
+        (select c.ADDRESS_LINE_1 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.FLAG_CORRESPONDENCE='CO') as CURRENT_ADDR_LN_1_45,
+        (select c.ADDRESS_LINE_2 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.FLAG_CORRESPONDENCE='CO') as CURRENT_ADDR_LN_2_46,
+        (select c.ADDRESS_LINE_3 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.FLAG_CORRESPONDENCE='CO') as CURRENT_ADDR_LN_3_47,
+        (select c.ADDRESS_CITY_VILLAGE from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='CO') as CURRENT_ADDR_LN_4_48A,
+        (select c.district_code_fk from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='CO') as CURRENT_CITY_CODE_48B,
+        (select cersai_district from ckyc.pincode_master m where m.cbs_district_id=c.district_code_fk and c.flag_regular_address='CO' fetch first row only) as CURRENT_CITY_NAME_48C,
+        (select c.state_code_fk from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='CO') as CURRENT_STATE_CODE_50A,
+        (select state_name from ckyc.pincode_master m where m.state_code=c.STATE_CODE_FK and c.flag_regular_address='CO' fetch first row only) as CURRENT_STATE_NAME_50B,
+        ' ' as CURRENT_COUNTRY_CODE_51A,
+        ' ' as CURRENT_COUNTRY_NAME_51B,
+        case when c.address_pin_code = 'Other' and c.flag_regular_address='CO' then c.other_pincode when c.address_pin_code <> 'Other' and c.flag_regular_address='CO' then c.address_pin_code end as CURRENT_ADDR_PINCODE_52,
+        ' ' as ID1_NBR_53,
+        ' ' as ID1_TYP_54,
+        ' ' as ID1_DESCRIPTION_55,
+        ' ' as ID2_NBR_56,
+        ' ' as ID2_TYP_57,
+        ' ' as ID2_DESCRIPTION_58,
+        ' ' as ID3_NBR_59,
+        ' ' as ID3_TYP_60,
+        ' ' as ID3_DESCRIPTION_61,
+        ' ' as AADHAR_SEEDED_FLG_62,
+        ' ' as CUST_TAX_PAN_63,
+        ' ' as FR60_FLG_64,
+        ' ' as CKYC_NO_65,
+        a.branch_code as BRANCHCD_66A,
+        ' ' as BRANCHNAME_66B,
+        ' ' as REGIONNAME_67,
+        ' ' as MODULENAME_68,
+        ' ' as NETWORKNAME_69,
+        ' ' as circlecd_70a,
+        ' ' as circlename_70b,
+        ' ' as FATHER_NAME,
+        ' ' as MOTHER_NAME,
+        ' ' as MARITAL_STATUS,
+        ' ' as ADD_PROOF_CKYC,
+        ROW_NUMBER() OVER (PARTITION BY a.cif_number ORDER BY a.account_number) as rn
+    FROM
+        kycupdate.kyc_perfios_customer_details a
+    INNER JOIN kycupdate.kyc_customer_details b ON a.cif_number = b.cif_number
+    INNER JOIN kycupdate.kyc_address_details  c ON a.cif_number = c.cif_number_fk
+    WHERE
+        a.perfios_lotname = :1 and a.cif_status='ZC'
+)
+WHERE rn = 1
+, Original SQL = SELECT *
+FROM (
+    SELECT
+        a.cif_number as cif_1,
+        a.account_number as acct_no_2,
+        ' ' as ACCT_TYPE_3,
+        ' ' as LOAN_ACCT_FLG_8,
+        ' ' as NO_ACCT_NO_RELTN_9,
+        ' ' as CLSD_ACCT_NO_RELTN_10,
+        ' ' as CUST_TIER_TYPE_CODE_11A,
+        ' ' as CUST_TIER_TYPE_DESC_11B,
+        ' ' as CIF_STATUS_12,
+        ' ' as CIF_DEDUPED_13,
+        ' ' as RISK_CATEGORY_14,
+        ' ' as KYC_SCORE_15,
+        ' ' as KYC_REVIEW_DATE_16,
+        ' ' as CIF_OPEN_DATE_17,
+        ' ' as CIF_CHANNEL_18,
+        ' ' as CIF_DEPOSIT_BAL_19,
+        ' ' as CIF_LOAN_BAL_20,
+        b.APPLICANT_NAME_PREFIX as NAME_PREFIX_CD_21,
+        b.applicant_first_name as FIRST_NAME_22A,
+        b.applicant_middle_name as MIDDLE_NAME_22B,
+        b.applicant_last_name as LAST_NAME_23,
+        ' ' as RELATIVE_CODE_24,
+       b.FATHER_NAME_PREFIX as FATHER_NAME_PREFIX_25A,
+        b.FATHER_FIRST_NAME as FATHER_FIRST_NAME_26A1,
+       b.FATHER_MIDDLE_NAME as FATHER_MID_NAME_26A2,
+     b.FATHER_LAST_NAME  as FATHER_LAST_NAME_27A,
+       b.SPOUSE_NAME_PREFIX as SPOUSE_NAME_PREFIX_25B,
+        b.SPOUSE_FIRST_NAME as SPOUSE_FIRST_NAME_26B1,
+        b.SPOUSE_MIDDLE_NAME as SPOUSE_MID_NAME_26B2,
+        b.SPOUSE_LAST_NAME as SPOUSE_LAST_NAME_27B,
+       b.MOTHER_NAME_PREFIX as MOTHER_NAME_PREFIX_28,
+       b.MOTHER_FIRST_NAME as MOTHER_FIRST_NAME_29A,
+        b.MOTHER_MIDDLE_NAME as MOTHER_MID_NAME_29B,
+        b.MOTHER_LAST_NAME as MOTHER_LAST_NAME_30,
+        b.GENDER as GENDER_31,
+        --b.dob as DATE_OF_BIRTH_32,
+        TO_CHAR(b.dob, 'YYYY-MM-DD') as DATE_OF_BIRTH_32,
+        ' ' as PAN_OR_FORM60_33,
+        (select c.ADDRESS_LINE_1 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_ADDR_LN_1_36,
+        (select c.ADDRESS_LINE_2 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_ADDR_LN_2_37,
+        (select c.ADDRESS_LINE_3 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_ADDR_LN_3_38,
+        (select c.ADDRESS_CITY_VILLAGE from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_CITY_NAME_39C,
+        (select c.district_code_fk from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_DIST_CODE_40A,
+        (select cersai_district from ckyc.pincode_master m where m.cbs_district_id=c.district_code_fk and c.flag_regular_address='R' fetch first row only) as PERM_DESCRIPTION_40B,
+        (select c.state_code_fk from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='R') as PERM_STATE_CODE_41A,
+        (select state_name from ckyc.pincode_master m where m.state_code=c.STATE_CODE_FK and c.flag_regular_address='R' fetch first row only) as PERM_STATE_NAME_41B,
+        ' ' as PERM_COUNTRY_CODE_42A,
+        ' ' as PERM_COUNTRY_NAME_42B,
+         case when c.address_pin_code = 'Other' and c.flag_regular_address='R' then c.other_pincode when c.address_pin_code <> 'Other' and c.flag_regular_address='R' then c.address_pin_code end as PERM_ADDR_PINCODE_43,
+        (select c.ADDRESS_LINE_1 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.FLAG_CORRESPONDENCE='CO') as CURRENT_ADDR_LN_1_45,
+        (select c.ADDRESS_LINE_2 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.FLAG_CORRESPONDENCE='CO') as CURRENT_ADDR_LN_2_46,
+        (select c.ADDRESS_LINE_3 from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.FLAG_CORRESPONDENCE='CO') as CURRENT_ADDR_LN_3_47,
+        (select c.ADDRESS_CITY_VILLAGE from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='CO') as CURRENT_ADDR_LN_4_48A,
+        (select c.district_code_fk from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='CO') as CURRENT_CITY_CODE_48B,
+        (select cersai_district from ckyc.pincode_master m where m.cbs_district_id=c.district_code_fk and c.flag_regular_address='CO' fetch first row only) as CURRENT_CITY_NAME_48C,
+        (select c.state_code_fk from kycupdate.kyc_address_details c where c.cif_number_fk=a.cif_number and c.flag_regular_address='CO') as CURRENT_STATE_CODE_50A,
+        (select state_name from ckyc.pincode_master m where m.state_code=c.STATE_CODE_FK and c.flag_regular_address='CO' fetch first row only) as CURRENT_STATE_NAME_50B,
+        ' ' as CURRENT_COUNTRY_CODE_51A,
+        ' ' as CURRENT_COUNTRY_NAME_51B,
+        case when c.address_pin_code = 'Other' and c.flag_regular_address='CO' then c.other_pincode when c.address_pin_code <> 'Other' and c.flag_regular_address='CO' then c.address_pin_code end as CURRENT_ADDR_PINCODE_52,
+        ' ' as ID1_NBR_53,
+        ' ' as ID1_TYP_54,
+        ' ' as ID1_DESCRIPTION_55,
+        ' ' as ID2_NBR_56,
+        ' ' as ID2_TYP_57,
+        ' ' as ID2_DESCRIPTION_58,
+        ' ' as ID3_NBR_59,
+        ' ' as ID3_TYP_60,
+        ' ' as ID3_DESCRIPTION_61,
+        ' ' as AADHAR_SEEDED_FLG_62,
+        ' ' as CUST_TAX_PAN_63,
+        ' ' as FR60_FLG_64,
+        ' ' as CKYC_NO_65,
+        a.branch_code as BRANCHCD_66A,
+        ' ' as BRANCHNAME_66B,
+        ' ' as REGIONNAME_67,
+        ' ' as MODULENAME_68,
+        ' ' as NETWORKNAME_69,
+        ' ' as circlecd_70a,
+        ' ' as circlename_70b,
+        ' ' as FATHER_NAME,
+        ' ' as MOTHER_NAME,
+        ' ' as MARITAL_STATUS,
+        ' ' as ADD_PROOF_CKYC,
+        ROW_NUMBER() OVER (PARTITION BY a.cif_number ORDER BY a.account_number) as rn
+    FROM
+        kycupdate.kyc_perfios_customer_details a
+    INNER JOIN kycupdate.kyc_customer_details b ON a.cif_number = b.cif_number
+    INNER JOIN kycupdate.kyc_address_details  c ON a.cif_number = c.cif_number_fk
+    WHERE
+        a.perfios_lotname = ?
+        and a.cif_status='ZC'
+)
+WHERE rn = 1
+, Error Message = ORA-28094: SQL construct not supported by data redaction
